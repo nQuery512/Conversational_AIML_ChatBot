@@ -1,0 +1,720 @@
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<aiml version="2.0" encoding="ISO-8859-1">
+
+
+<!--- PRESENTATION -->
+<category>
+    <pattern> [Yo Salut Bonjour slt] #</pattern>
+    <template><random> <li>Salut je m'appelle Alice</li><li>Bonjour je suis Alice</li></random> et je suis le bot en charge de présenter les caractéristiques des derniers téléphones de Samsung. Comment vous appelez-vous ?</template>
+</category>
+
+<category>
+    <pattern>je m'appelle * </pattern>
+    <template><think><set name = "topic">humeur</set></think>Ravi de faire votre connaissance <set name = "username"> <star/> </set>. Comment allez-vous? </template>
+</category>
+
+<category>
+    <pattern># liste #</pattern>
+    <template>Voici la liste de nos produit:S6, S6 Edge, S7, S7 edge, A3, A5, J3, J5 et J7</template>
+</category>
+
+<!--- TOPIC humeur -->
+<topic name = "humeur">
+    
+    <category>
+        <pattern>Ca va #</pattern>
+        <template>Je vais bien merci et vous?</template>
+    </category>
+
+    <category>
+        <pattern>oui #</pattern>
+        <that>Je vais bien merci et vous?</that>
+        <template>Je suis heureux de l'entendre !</template>
+    </category>
+
+    <category>
+        <pattern>Comment allez #</pattern>
+        <template><srai>Ca va</srai></template>
+    </category>
+    
+    <category>
+        <pattern>Comment aller #</pattern>
+        <template><srai>Ca va</srai></template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <template>Ravie de l'entendre! Nous avons trois gammes de téléphones, dans la gamme S nous avons les Galaxy S6, Galaxy S6 Edge, Galaxy S7 Edge ainsi que le Galaxy S7. Dans la gamme A nous avons le A5 2016 ainsi que le Galaxy A3 2016. Pour terminer nous avons la gamme J qui se compose du J7, J5 et J3<think><set name = "topic">cellphone</set><set name = "S6_ECRAN">5,1p|2560 x 1440 (Quad HD)</set><set name = "S6_EDGE_ECRAN">5,1p|2560 x 1440 (Quad HD, écran incurvé)</set><set name = "S7_ECRAN">5,1p|577ppp (Quad HD)</set><set name = "S7_EDGE_ECRAN">5,1p|564ppp (Quad HD, écran incurvé)</set><set name = "A3_ECRAN">5,1p|2560 x 1440 (Full HD)</set><set name = "A5_ECRAN">4,7p|720 x 1280 (HD)|Super AMOLED</set><set name = "J3_ECRAN">5.0p 1280 x 720 (HD)</set><set name = "J5_ECRAN">5.2p|1280 x 720 (SUPER AMOLED)</set><set name = "J7_ECRAN">5.5p|720 x 1280 (HD)|Super AMOLED</set>||<set name = "S6_PRIX">399</set><set name = "S6_EDGE_PRIX">499</set><set name = "S7_PRIX">556</set><set name = "S7_EDGE_PRIX">556</set><set name = "A3_PRIX">195</set><set name = "A5_PRIX">274</set><set name = "J3_PRIX">139</set><set name = "J5_PRIX">174</set><set name = "J7_PRIX">228</set></think></template>
+    </category>
+
+</topic>
+
+<category> 
+    <pattern>je me nomme *</pattern>
+    <template><srai> je m'appelle <star/></srai></template>
+</category>
+
+<category> 
+    <pattern>je suis *</pattern>
+    <template><srai> je m'appelle <star/></srai></template>
+</category>
+
+<category>
+    <pattern>Je dois partir #</pattern>
+    <template><random><li> A la prochaine </li><li> A bientot </li><li> Bonne journee </li></random></template>
+</category>
+
+<category>
+    <pattern>[Bye a+ ciao]</pattern>
+    <template><srai>Je dois partir</srai></template>
+</category>
+
+<category>
+    <pattern>Je dois y [aller allez]</pattern>
+    <template><srai>Je dois partir</srai></template>
+</category>
+
+<category>
+    <pattern>Aurevoir</pattern>
+    <template><srai>Je dois partir</srai></template>
+</category>
+
+<category>
+    <pattern>Au revoir</pattern>
+    <template><srai>Je dois partir</srai></template>
+</category>
+
+<category>
+    <pattern>Jy vais</pattern>
+    <template><srai>Je dois partir</srai></template>
+</category>
+
+<category>
+    <pattern>J'y vais</pattern>
+    <template><srai>Je dois partir</srai></template>
+</category>
+
+<!--- AUTRE -->
+<category>
+    <pattern>J'aime #</pattern>
+    <template><random><li>Moi aussi!</li><li>Je ne suis pas de cette avis.</li></random></template>
+</category>
+
+<category>
+    <pattern>what is *</pattern>
+    <template><sraix service="wikidata"><star/></sraix></template>
+</category>
+
+<category>
+    <pattern>Merci #</pattern>
+    <template> Pas de probleme il faut s'aider entre robot !</template>
+</category>
+
+<!--- REPONSE STANDARD -->
+<category>
+    <pattern> *</pattern>
+    <template> <random><li>Je n'ai pas compris !</li><li>Cela a l'air compliqué.</li><li>Pouvez-vous preciser ?</li><li>Peut-être</li><li>Certainement</li></random></template>
+</category>
+
+<!--- PROGRAMME PRINCIPAL -->
+<topic name = "cellphone">
+
+   <!--- Caractéristiques techniques -->
+   
+   <!--- Autonomie -->
+   <category>
+        <pattern># s6 # $autonomie</pattern>
+        <template>L'autonomie du galaxy S6 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># s6 edge # $autonomie</pattern>
+        <template>L'autonomie du galaxy S6 edge est de 6heures</template>
+    </category>
+    
+    <category>
+        <pattern># s7 # $autonomie</pattern>
+        <template>L'autonomie du galaxy S7 est de 7heures 30 en utilisation normale</template>
+    </category>
+
+    <category>
+        <pattern># s7 edge # $autonomie</pattern>
+        <template>L'autonomie du galaxy S7 edge est de 8heures en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># A3 # $autonomie</pattern>
+        <template>L'autonomie du galaxy A3 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># A5 # $autonomie</pattern>
+        <template>L'autonomie du galaxy A5 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+     <category>
+        <pattern># J3 # $autonomie</pattern>
+        <template>L'autonomie du galaxy J3 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># J5 # $autonomie</pattern>
+        <template>L'autonomie du galaxy J5 est de 6heures 20 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># J7 # $autonomie</pattern>
+        <template>L'autonomie du galaxy J7 est de 7heures 10 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $autonomie # s6 </pattern>
+        <template>L'autonomie du galaxy S6 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $autonomie # s6 edge</pattern>
+        <template>L'autonomie du galaxy S6 edge est de 6heures en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $autonomie # s7</pattern>
+        <template>L'autonomie du galaxy S7 est de 7heures 30 en utilisation normale</template>
+    </category>
+
+    <category>
+        <pattern># $autonomie # s7 edge</pattern>
+        <template>L'autonomie du galaxy S7 edge est de 8heures en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $autonomie # A3</pattern>
+        <template>L'autonomie du galaxy A3 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $autonomie # A5</pattern>
+        <template>L'autonomie du galaxy A5 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+     <category>
+        <pattern># $autonomie # J3</pattern>
+        <template>L'autonomie du galaxy J3 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $autonomie # J5</pattern>
+        <template>L'autonomie du galaxy J5 est de 6heures 20 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $autonomie # J7</pattern>
+        <template>L'autonomie du galaxy J7 edge est de 7heures 10 en utilisation normale</template>
+    </category>
+   
+   <category>
+        <pattern># s6 # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy S6 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># s6 edge # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy S6 edge est de 6heures</template>
+    </category>
+    
+    <category>
+        <pattern># s7 # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy S7 est de 7heures 30 en utilisation normale</template>
+    </category>
+
+    <category>
+        <pattern># s7 edge # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy S7 edge est de 8heures en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># A3 # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy A3 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># A5 # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy A5 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+     <category>
+        <pattern># J3 # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy J3 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># J5 # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy J5 est de 6heures 20 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># J7 # $l'autonomie</pattern>
+        <template>L'autonomie du galaxy J7 est de 7heures 10 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $l'autonomie # s6 </pattern>
+        <template>L'autonomie du galaxy S6 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $l'autonomie # s6 edge</pattern>
+        <template>L'autonomie du galaxy S6 edge est de 6heures en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $l'autonomie # s7</pattern>
+        <template>L'autonomie du galaxy S7 est de 7heures 30 en utilisation normale</template>
+    </category>
+
+    <category>
+        <pattern># $l'autonomie # s7 edge</pattern>
+        <template>L'autonomie du galaxy S7 edge est de 8heures en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $l'autonomie # A3</pattern>
+        <template>L'autonomie du galaxy A3 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $l'autonomie # A5</pattern>
+        <template>L'autonomie du galaxy A5 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+     <category>
+        <pattern># $l'autonomie # J3</pattern>
+        <template>L'autonomie du galaxy J3 est de 6heures 30 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $l'autonomie # J5</pattern>
+        <template>L'autonomie du galaxy J5 est de 6heures 20 en utilisation normale</template>
+    </category>
+    
+    <category>
+        <pattern># $l'autonomie # J7</pattern>
+        <template>L'autonomie du galaxy J7 edge est de 7heures 10 en utilisation normale</template>
+    </category>
+   
+   
+    <!--- PRIX -->
+    <category>
+        <pattern># s6 # $prix</pattern>
+        <template>Le prix du galaxy S6 est <get name = "S6_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># s6 edge # $prix</pattern>
+        <template>Le prix du galaxy S6 EDGE est <get name = "S6_EDGE_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># s7 # $prix</pattern>
+        <template>Le prix du galaxy S7 est <get name = "S7_PRIX"/> euros</template>
+    </category>
+
+    <category>
+        <pattern># s7 edge # $prix</pattern>
+        <template>Le prix du galaxy S7 EDGE est <get name = "S7_EDGE_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># A3 # $prix</pattern>
+        <template>Le prix du galaxy A3 est <get name = "A3_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># A5 # $prix</pattern>
+        <template>Le prix du galaxy A5 est <get name = "A5_PRIX"/> euros</template>
+    </category>
+    
+     <category>
+        <pattern># J3 # $prix</pattern>
+        <template>Le prix du galaxy J3 est <get name = "J3_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># J5 # $prix</pattern>
+        <template>Le prix du galaxy J5 est <get name = "J5_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># J7 # $prix</pattern>
+        <template>Le prix du galaxy J7 est <get name = "J7_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># $prix # s6 </pattern>
+        <template>Le prix du galaxy S6 est <get name = "S6_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># $prix # s6 edge</pattern>
+        <template>Le prix du galaxy S6 EDGE est <get name = "S6_EDGE_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># $prix # s7</pattern>
+        <template>Le prix du galaxy S7 est <get name = "S7_PRIX"/> euros</template>
+    </category>
+
+    <category>
+        <pattern># $prix # s7 edge</pattern>
+        <template>Le prix du galaxy S7 EDGE est <get name = "S7_EDGE_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># $prix # A3</pattern>
+        <template>Le prix du galaxy A3 est <get name = "A3_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># $prix # A5</pattern>
+        <template>Le prix du galaxy A5 est <get name = "A5_PRIX"/> euros</template>
+    </category>
+    
+     <category>
+        <pattern># $prix # J3</pattern>
+        <template>Le prix du galaxy J3 est <get name = "J3_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># $prix # J5</pattern>
+        <template>Le prix du galaxy J5 est <get name = "J5_PRIX"/> euros</template>
+    </category>
+    
+    <category>
+        <pattern># $prix # J7</pattern>
+        <template>Le prix du galaxy J7 est <get name = "J7_PRIX"/> euros</template>
+    </category>
+    
+    <!--- ECRAN -->
+    <category>
+        <pattern># s6 # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6. <get name = "S6_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># s6 edge # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6 EDGE. <get name = "S6_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># s7 # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7. <get name = "S7_ECRAN"/></template>
+    </category>
+
+    <category>
+        <pattern># s7 edge # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7 EDGE. <get name = "S7_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># A3 # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A3. <get name = "A3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># A5 # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A5. <get name = "A5_ECRAN"/></template>
+    </category>
+    
+     <category>
+        <pattern># J3 # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J3. <get name = "J3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># J5 # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J5. <get name = "J5_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># J7 # $ecran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J7. <get name = "J7_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $ecran # s6 </pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6. <get name = "S6_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $ecran # s6 edge</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6 EDGE. <get name = "S6_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $ecran # s7</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7. <get name = "S7_ECRAN"/></template>
+    </category>
+
+    <category>
+        <pattern># $ecran # s7 edge</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7 EDGE. <get name = "S7_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $ecran # A3</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A3. <get name = "A3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $ecran # A5</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A5. <get name = "A5_ECRAN"/></template>
+    </category>
+    
+     <category>
+        <pattern># $ecran # J3</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J3. <get name = "J3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $ecran # J5</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J5. <get name = "J5_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $ecran # J7</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J7. <get name = "J7_ECRAN"/></template>
+    </category>
+    
+     <category>
+        <pattern># s6 # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6. <get name = "S6_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># s6 edge # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6 EDGE. <get name = "S6_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># s7 # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7. <get name = "S7_ECRAN"/></template>
+    </category>
+
+    <category>
+        <pattern># s7 edge # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7 EDGE. <get name = "S7_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># A3 # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A3. <get name = "A3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># A5 # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A5. <get name = "A5_ECRAN"/></template>
+    </category>
+    
+     <category>
+        <pattern># J3 # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J3. <get name = "J3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># J5 # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J5. <get name = "J5_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># J7 # $écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J7. <get name = "J7_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $écran # s6 </pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6. <get name = "S6_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $écran # s6 edge</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6 EDGE. <get name = "S6_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $écran # s7</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7. <get name = "S7_ECRAN"/></template>
+    </category>
+
+    <category>
+        <pattern># $écran # s7 edge</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7 EDGE. <get name = "S7_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $écran # A3</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A3. <get name = "A3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $écran # A5</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A5. <get name = "A5_ECRAN"/></template>
+    </category>
+    
+     <category>
+        <pattern># $écran # J3</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J3. <get name = "J3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $écran # J5</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J5. <get name = "J5_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $écran # J7</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J7. <get name = "J7_ECRAN"/></template>
+    </category>
+    
+     <category>
+        <pattern># s6 # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6. <get name = "S6_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># s6 edge # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6 EDGE. <get name = "S6_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># s7 # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7. <get name = "S7_ECRAN"/></template>
+    </category>
+
+    <category>
+        <pattern># s7 edge # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7 EDGE. <get name = "S7_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># A3 # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A3. <get name = "A3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># A5 # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A5. <get name = "A5_ECRAN"/></template>
+    </category>
+    
+     <category>
+        <pattern># J3 # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J3. <get name = "J3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># J5 # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J5. <get name = "J5_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># J7 # $l'écran</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J7. <get name = "J7_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $l'écran # s6 </pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6. <get name = "S6_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $l'écran # s6 edge</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S6 EDGE. <get name = "S6_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $l'écran # s7</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7. <get name = "S7_ECRAN"/></template>
+    </category>
+
+    <category>
+        <pattern># $l'écran # s7 edge</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy S7 EDGE. <get name = "S7_EDGE_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $l'écran # A3</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A3. <get name = "A3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $l'écran # A5</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy A5. <get name = "A5_ECRAN"/></template>
+    </category>
+    
+     <category>
+        <pattern># $l'écran # J3</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J3. <get name = "J3_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $l'écran # J5</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J5. <get name = "J5_ECRAN"/></template>
+    </category>
+    
+    <category>
+        <pattern># $l'écran # J7</pattern>
+        <template>Voici les caractéristiques de l'écran du galaxy J7. <get name = "J7_ECRAN"/></template>
+    </category>
+
+    <!--- GAMME S -->
+    <category>
+        <pattern># s7 $edge </pattern>
+        <template> Voici le Galaxy S7 Edge, il fait partie de la gamme S de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://www.samsung.com/ch_fr/consumer/mobile-devices/smartphones/galaxy-s/galaxy-s7/images/galaxy-s7-edge_gallery_front_white_s3.png" /></template>
+    </category>
+
+    <category>
+        <pattern># s7 </pattern>
+        <template> Voici le Galaxy S7, il fait partie de la gamme S de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://img1.lesnumeriques.com/produits/36/30227/samsung-galaxy-s7_3535d315194b492f_450x400.png" /> </template>
+    </category>
+
+    <category>
+        <pattern># s6 $edge </pattern>
+        <template> Voici le Galaxy S6 Edge, il fait partie de la gamme S de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://images.samsung.com/is/image/samsung/fr_SM-G925FZKAXEF_006_Front_black?$TM-Gallery$" /></template>
+    </category>
+
+    <category>
+        <pattern># s6 </pattern>
+        <template> Voici le Galaxy S6 , il fait partie de la gamme S de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://www.samsung.com/uk/galaxys6/images/colours/galaxys6_black_v3.jpg" /> </template>
+    </category>
+
+    <!--- GAMME A -->
+    <category>
+        <pattern># A5 </pattern>
+        <template> Voici le Galaxy A5 2016, il fait partie de la gamme A de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://buzzsxm.fr/558-thickbox_default/samsung-galaxy-a5-2016.jpg" /></template>
+    </category>
+    
+    <category>
+        <pattern># A3 </pattern>
+        <template> Voici le Galaxy A3 2016, il fait partie de la gamme A de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://img1.lesnumeriques.com/produits/36/30011/samsung-galaxy-a3-2016_d1492a450c0a785d_450x400.jpg" /></template>
+    </category>
+
+    <!--- GAMME J -->
+    <category>
+         <pattern># J7 </pattern>
+        <template> Voici le Galaxy J7 2016, il fait partie de la gamme J de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://img1.lesnumeriques.com/produits/36/31029/samsung-galaxy-j7-2016_eb045dac53fe1a57_450x400.jpg" /></template>
+    </category>
+
+    <category>
+        <pattern># J5 </pattern>
+        <template> Voici le Galaxy J5 2016, il fait partie de la gamme J de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://img1.lesnumeriques.com/produits/36/32161/samsung-galaxy-j5-2016_f44e8df66ea6c932_450x400.jpg" /></template>
+    </category>
+
+    <category>
+        <pattern># J3 </pattern>
+        <template> Voici le Galaxy J3 2016, il fait partie de la gamme J de Samsung, je dispose de toute les informations techniques concernant ce produit, n'hésitez pas à me les demander! <img src = "http://img1.lesnumeriques.com/produits/36/32919/samsung-galaxy-j3-2016_ba0789b93d5a700d_450x400.jpg" /></template>
+    </category>
+    
+</topic>
+
+</aiml>
+
